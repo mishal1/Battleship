@@ -33,21 +33,31 @@ it interacts with:
 it should:
 - capacity of 100 squares
 - belongs to a player
-- records ships
-- records shots
-- has water where there are no ships
-- board tells ships if they are hit
 - needs to know if it is the primary or tracking
 - needs to tell the player if all the ships have sunk
-- accepts intruction to place the ships
-- needs to know the where the ships are placed
 - asks the player to place a ship
 - keeps track of which ships have not been placed
-- accepts instructions from player on where to place ships
+- needs to know about square functions
+- needs to a grid
+- square location should be [a-j][1-10]
 
 it interacts with:
 - ships
 - player
+- square
+
+###Square Class
+it should:
+- belongs to a board
+- records ships
+- records shots
+- has water where there are no ships
+- board tells ships if they are hit
+- must be unique
+
+it interacts with:
+-board
+-ship
 
 ###Ship Class
 
@@ -59,6 +69,7 @@ it should:
 
 it interacts with:
 - board
+- square
 
 Stuff we don't need to think about for a simple prototype
 
