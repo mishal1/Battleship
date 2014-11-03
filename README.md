@@ -42,6 +42,9 @@ it should:
 - needs to tell the player if all the ships have sunk
 - accepts intruction to place the ships
 - needs to know the where the ships are placed
+- asks the player to place a ship
+- keeps track of which ships have not been placed
+- accepts instructions from player on where to place ships
 
 it interacts with:
 - ships
