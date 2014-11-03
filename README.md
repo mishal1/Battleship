@@ -2,7 +2,7 @@ Battleship
 ==============
 battleship ruby practice
 
-##CR Cards
+##CRC Cards
 
 
 ###Player Class
