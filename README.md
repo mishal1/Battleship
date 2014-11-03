@@ -19,7 +19,7 @@ it interacts with:
 - game
 - board
 
-###Ships Class
+###Ship Class
 
 it should:
 - be able to float
