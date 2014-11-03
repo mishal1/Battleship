@@ -3,12 +3,17 @@ require 'board'
 describe Board do
   context 'basic properties' do
     
-    let(:square) {double :square, :is_a? => true}
-    let(:board) {Board.new}
+    let(:water) {double :square, :water? => true}
+    let(:board) {Board.new([water])}
 
-    # it "contains a square" do
-    #   expect(board.squares).to contain(square)
-    # end
+    it 'can contain something' do
+      expect(board.squares.first).not_to be_nil
+    end
+
+    it 'first square contains water when initiated' do
+      expect(board.squares.first.water?).to be(true)
+    end
+
 
   end
 end

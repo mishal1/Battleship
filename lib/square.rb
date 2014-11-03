@@ -1,6 +1,7 @@
 class Square
   def initialize
     @water = true
+    @ship = false
   end
 
   def water?
@@ -8,10 +9,11 @@ class Square
   end
 
   def ship?
-    true
+    @ship
   end
 
   def place_ship
     @water = false
+    @ship = true
   end
 end

@@ -7,6 +7,10 @@ describe Square do
     expect(square.water?).to be(true) 
   end
 
+  it 'does not contain ship when made' do
+    expect(square.ship?).to be(false)
+  end
+
   it "can contain a ship" do
     square.place_ship
     expect(square.ship?).to be(true)
@@ -17,4 +21,8 @@ describe Square do
     expect(square.water?).to be(false)
   end
 
+  it "can be hit" do
+
+  end
+  
 end

@@ -1,7 +1,12 @@
 class Board
 
-def squares
-  (1..100).to_a
-end
+  def initialize(square_array)
+    @squares = square_array
+  end
+
+
+  def squares
+    @squares
+  end
 
 end
