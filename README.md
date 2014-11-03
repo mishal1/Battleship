@@ -60,3 +60,9 @@ it should:
 
 it interacts with:
 - board
+
+Stuff we don't need to think about for a simple prototype
+
+3x3 board - borrow from chris' noghts and crosses
+both players see everything
+one ship      
