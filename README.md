@@ -4,6 +4,16 @@ battleship ruby practice
 
 ##CRC Cards
 
+###Game Class
+
+it should:
+- have two players
+- must be able to start
+- chooses a player to start
+- must end
+
+it interacts with:
+- player
 
 ###Player Class
 
@@ -17,17 +27,6 @@ it should:
 
 it interacts with:
 - game
-- board
-
-###Ship Class
-
-it should:
-- be able to float
-- be able to sink
-- has a length
-- needs an identifier 
-
-it interacts with:
 - board
 
 ###Board Class
@@ -48,12 +47,13 @@ it interacts with:
 - ships
 - player
 
-###Game Class
+###Ship Class
 
 it should:
-- have two players
-- must be able to start
-- chooses a player to start
-- must end
+- be able to float
+- be able to sink
+- has a length
+- needs an identifier 
 
 it interacts with:
+- board
