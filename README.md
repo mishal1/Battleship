@@ -6,14 +6,13 @@ battleship ruby practice
 
 ###Game Class
 
-it should:
-- have two players
-- must be able to start
-- chooses a player to start
-- must end
+|it should:|it interacts with:|
+|-----|-----|
+|- have two players| player|
+|- must be able to start| |
+|- chooses a player to start| |
+|- must end| |
 
-it interacts with:
-- player
 
 ###Player Class
 
