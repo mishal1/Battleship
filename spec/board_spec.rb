@@ -23,17 +23,13 @@ describe Board do
       expect(board.grid_ref_array.size).to eq(100)
     end
 
-    it 'has a cell stored at several grid refs' do
-      expect(board.cells_hash['a1'].is_a?(Cell)).to be true
-      expect(board.cells_hash['c5'].is_a?(Cell)).to be true
-      expect(board.cells_hash['d4'].is_a?(Cell)).to be true
-    end
-
-    it 'cells hash must include 100 unique elements' do
+    it 'cells hash must include 100 unique keys' do
       expect(board.cells_hash.keys.uniq.size).to eq(100)
     end
 
-
+   it 'cells hash must include 100 unique values' do
+      expect(board.cells_hash.values.uniq.size).to eq(100)
+    end
 
   end
 end
