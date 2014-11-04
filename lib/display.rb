@@ -6,9 +6,10 @@ class Board
     puts "Displaying board for player #{player}"
     puts tracking ? "Tracking Board" : "Showing Ships"
 
+    show_row('  ',('a'..'j').to_a)
     row_separator
-    rows.each do |row| 
-      show_row('  ' , map_cells(row))
+    rows.each_with_index do |row, index| 
+      show_row(((index+1)%10).to_s + ' ' , map_cells(row))
       row_separator
     end
   end
