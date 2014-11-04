@@ -1,12 +1,11 @@
 require 'board'
 
-class Cell; end
 
 describe Board do
   context 'basic properties' do
     
     let(:cell) {double :cell, :is_a? => true }
-    let(:board) {Board.new(cell)}
+    let(:board) {Board.new}
 
     it 'can contain something' do
       expect(board.cells.first).not_to be_nil
@@ -37,6 +36,8 @@ describe Board do
     it 'cells hash must include 100 elements' do
       expect(board.cells.size).to eq(100)
     end
+
+
 
   end
 end

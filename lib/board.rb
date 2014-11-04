@@ -1,8 +1,8 @@
 class Board
 
-   def initialize(cell)
-    @cells_hash = {}
-     grid_ref_array.each {|grid_ref| @cells_hash[grid_ref] = cell}
+   def initialize
+      @cells_hash = {}
+     grid_ref_array.each {|grid_ref| @cells_hash[grid_ref] = Cell.new}
    end
 
 
