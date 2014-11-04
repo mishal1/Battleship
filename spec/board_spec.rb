@@ -33,8 +33,8 @@ describe Board do
       expect(board.cells['d4'].is_a?(Cell)).to be true
     end
 
-    it 'cells hash must include 100 elements' do
-      expect(board.cells.size).to eq(100)
+    it 'cells hash must include 100 unique elements' do
+      expect(board.cells.keys.uniq.size).to eq(100)
     end
 
 

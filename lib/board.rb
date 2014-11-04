@@ -1,5 +1,6 @@
-class Board
+# require_relative 'cell'
 
+class Board
    def initialize
       @cells_hash = {}
      grid_ref_array.each {|grid_ref| @cells_hash[grid_ref] = Cell.new}
