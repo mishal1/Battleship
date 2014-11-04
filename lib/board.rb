@@ -1,12 +1,23 @@
 class Board
 
-  def initialize(square_array)
-    @squares = square_array
+   def initialize(cell)
+    @cells_hash = {}
+     grid_ref_array.each {|grid_ref| @cells_hash[grid_ref] = cell}
+   end
+
+
+  def cells
+    @cells_hash
   end
 
-
-  def squares
-    @squares
+  def grid_ref_array
+    return_array = []
+    ('a'..'j').each do |letter|
+      (1..10).each do |number|
+        return_array << letter+number.to_s
+      end
+    end 
+    return_array 
   end
 
 end
