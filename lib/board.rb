@@ -1,12 +1,12 @@
 class Board
 
-  def initialize(square_array)
-    @squares = square_array
-  end
+   def initialize(cell)
+     @cells_hash = {'a1'=>cell}
+   end
 
 
-  def squares
-    @squares
+  def cells
+    @cells_hash
   end
 
 end
