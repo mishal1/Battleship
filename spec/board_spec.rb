@@ -31,5 +31,12 @@ describe Board do
       expect(board.cells_hash.values.uniq.size).to eq(100)
     end
 
+    it "has a ship at a1 after ship placed at a1" do
+      water = double :cell 
+      dummy_board = Board.new
+      dummy_board.cells_hash = { 'a1' => water }
+      expect(water).to receive(:is_part_of_a_ship)
+      dummy_board.place_ship_cell('a1')
+    end
   end
 end
