@@ -18,4 +18,11 @@ describe Player do
 		player.chooses_cell("a2")
 		expect(player.ship_coordinates.uniq.length == player.ship_coordinates.length).to be true
 	end
+
+	it "should be able to place shots with unique positions" do
+
+	end
+
+	# player must choose according to grid -> input validation
+
 end
