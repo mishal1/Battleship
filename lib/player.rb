@@ -33,18 +33,29 @@ class Player
 	end
 
 	def chooses_cell(cell_key)
-		raise IncorrectCharacterFormat unless ( /[a-jA-J]\d/.match(cell_key) && cell_key.length == 2 ) || ( /[a-jA-J]10/.match(cell_key) && cell_key.length == 3 )
+		raise IncorrectCharacterFormat unless appropriate_coordinates_for(cell_key)
 		raise NeedsToBeUnique if ship_coordinates.include?(cell_key)
 		@ship_coordinates << cell_key
 	end
 
 	def chooses_cell_for_shooting(cell_key)
-		raise IncorrectCharacterFormat unless ( /[a-jA-J]\d/.match(cell_key) && cell_key.length == 2 ) || ( /[a-jA-J]10/.match(cell_key) && cell_key.length == 3 )
+		raise IncorrectCharacterFormat unless appropriate_coordinates_for(cell_key)
 		raise NeedsToBeUnique if shot_coordinates.include?(cell_key)
 		@shot_coordinates << cell_key
 	end
 
-		
+	def appropriate_coordinates_for(cell_key)
+		( valid_coordinate?(cell_key, 2) && valid_length?(cell_key, 2) ) || ( valid_coordinate?(cell_key, 3) && valid_length?(cell_key, 3) )
+	end
+
+	def valid_coordinate?(cell_key, char_count)
+		return /[a-jA-J][1-9]/.match(cell_key) if char_count == 2
+		/[a-jA-J]10/.match(cell_key) if char_count == 3
+	end
+
+	def valid_length?(cell_key, char_count)
+		cell_key.length == char_count
+	end
 
 
 end
