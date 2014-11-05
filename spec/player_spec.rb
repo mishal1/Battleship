@@ -13,9 +13,9 @@ describe Player do
 		expect(player.unplaced_ships.count).to eq(5)
 	end
 
-	it "should be able to place ship position" do
-		player.chooses_cell('a1')
-		player.chooses_cell('a2')
-		
+	it "should be able to place unique ship position" do
+		player.chooses_cell("a1")
+		player.chooses_cell("a2")
+		expect(player.ship_coordinates.uniq.length == player.ship_coordinates.length).to be true
 	end
 end
