@@ -47,7 +47,15 @@ describe Board do
       dummy_board.place_all_ships(['a1'])
     end
 
-
+    it "should receive a shot at a1" do
+      water = double :cell
+      dummy_board = Board.new
+      dummy_board.cells_hash = {'a1'=> water}
+      expect(water).to receive(:has_been_hit)
+      dummy_board.shoot_at_cell('a1')
+    end
 
   end
 end
+
+#Change is to become
