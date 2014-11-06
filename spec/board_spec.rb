@@ -38,5 +38,16 @@ describe Board do
       expect(water).to receive(:is_part_of_a_ship)
       dummy_board.place_ship_cell('a1')
     end
+
+    it "has a ship at a1 after being passed ship array containing 'a1'" do
+      water = double :cell 
+      dummy_board = Board.new
+      dummy_board.cells_hash = { 'a1' => water }
+      expect(water).to receive(:is_part_of_a_ship)
+      dummy_board.place_all_ships(['a1'])
+    end
+
+
+
   end
 end
