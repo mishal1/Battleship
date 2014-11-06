@@ -47,8 +47,23 @@ describe Player do
 		expect{player.chooses_cell_for_shooting("w12")}.to raise_error(IncorrectCharacterFormat)
 	end
 
-#### here is where we are.
-# it "should place ships on the board when all the cells have been chosen" do
+	it "should know when finished choosing positions for ships" do
+		player.chooses_cell("a1")
+		player.chooses_cell("a2")
+		player.chooses_cell("c10")
+		player.chooses_cell("e9")
+		player.chooses_cell("j3")
+		expect(player.chosen_all_ships_positions?).to be true
+	end
+
+	# it "should then give ship positions to board when finished choosing" do
+	# 	player.chooses_cell("a1")
+	# 	player.chooses_cell("a2")
+	# 	player.chooses_cell("c10")
+	# 	player.chooses_cell("e9")
+	# 	player.chooses_cell("j3")
+	# 	expect(board).to receive(:place_ship_cell)
+	# end
 
 
 end

@@ -1,10 +1,12 @@
 require_relative 'board'
-require_relative'ship'
-require_relative'cell'
-require_relative'display'
+require_relative 'ship'
+require_relative 'cell'
+require_relative 'display'
 
+DEFAULT_SHIP_COUNT_AT_START = 5
 
 class NeedsToBeUnique < Exception
+
 	def message
 		"Players are not allowed to select the same cell twice"
 	end
@@ -25,14 +27,9 @@ class Player
 	def initialize
 		@board = Board.new
 		@ships =[]
-		5.times{@ships << Ship.new}
+		DEFAULT_SHIP_COUNT_AT_START.times{@ships << Ship.new}
 		@ship_coordinates = []
 		@shot_coordinates = []
-
-#   suggested thinking
-#		ship_count_at_start = Game.new.ship_count_at_start
-#		ship_count_at_start.times{@ships << Ship.new}
-
 	end
 
 	def has_board?
@@ -47,6 +44,7 @@ class Player
 		raise IncorrectCharacterFormat unless appropriate_coordinates_for(cell_key)
 		raise NeedsToBeUnique if ship_coordinates.include?(cell_key)
 		@ship_coordinates << cell_key
+		give_ship_positions_to_board(ship_coordinates) if chosen_all_ships_positions?
 	end
 
 	def chooses_cell_for_shooting(cell_key)
@@ -68,22 +66,13 @@ class Player
 		cell_key.length == char_count
 	end
 
-  # def place_something_on_board
-  # 	board.place_ship_cell(ship_coordinates.first)
+	def chosen_all_ships_positions?
+		ship_coordinates.count == DEFAULT_SHIP_COUNT_AT_START
+	end
 
-### this basically should run when ship_co-ordintes.count == ship_count_at_start (predefined)
-
-  # end
-
-
-  # def test_player
-  # 	place_something_on_board
-  # 	self.board.show("Adam")
-  # end
-
+  def give_ship_positions_to_board(ship_coordinates)
+  	board.place_all_ships(ship_coordinates)
+  end
 
 
 end
-# my_player = Player.new
-# my_player.chooses_cell('b8')
-# my_player.test_player
