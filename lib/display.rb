@@ -1,4 +1,7 @@
-require_relative 'board'
+
+require_relative 'board' 
+
+
 require_relative 'cell'
 class Display
 
@@ -55,13 +58,22 @@ class Display
 end
 
 class FancyDisplay < Display
-  require 'colorize' # need to run 'gem install colorize' on command line
+  gem_installed? = true 
+  begin
+    require 'colorize' 
+  rescue 
+    gem_installed? = false #  'gem install colorize' on command line
+  end
+
   def map_cells(row)
     row.map do |cell|
-      display = ( cell.have_ship ? 's'.magenta : 'w'.blue )
+      if gem_installed?
+        display = ( cell.have_ship ? 's'.magenta : 'w'.blue )
+      else
+        display = ( cell.have_ship ? 's' : 'w' )
+      end
       display.upcase if cell.hit
       display
     end
   end
-
 end
