@@ -2,8 +2,8 @@ require "./lib/player.rb"
 
 describe Player do
 
-	let(:player) {Player.new}
-	let(:board) {double :board}
+	let(:board) {double :board, :place_all_ships => nil}
+	let(:player) {Player.new(board)}
 
 	it "should have a board" do
 		expect(player).to have_board
@@ -56,14 +56,14 @@ describe Player do
 		expect(player.chosen_all_ships_positions?).to be true
 	end
 
-	# it "should then give ship positions to board when finished choosing" do
-	# 	player.chooses_cell("a1")
-	# 	player.chooses_cell("a2")
-	# 	player.chooses_cell("c10")
-	# 	player.chooses_cell("e9")
-	# 	player.chooses_cell("j3")
-	# 	expect(board).to receive(:place_ship_cell)
-	# end
+	it "should then give ship positions to board when finished choosing" do
+		player.chooses_cell("a1")
+		player.chooses_cell("a2")
+		player.chooses_cell("c10")
+		player.chooses_cell("e9")
+		player.chooses_cell("j3")
+		expect(board).to have_received(:place_all_ships)
+	end
 
 
 end

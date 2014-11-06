@@ -20,12 +20,11 @@ end
 
 class Player
 
-	attr_accessor :board
 	attr_accessor :ship_coordinates
 	attr_accessor :shot_coordinates
 
-	def initialize
-		@board = Board.new
+	def initialize(init_board = Board.new)
+		@local_board = init_board
 		@ships =[]
 		DEFAULT_SHIP_COUNT_AT_START.times{@ships << Ship.new}
 		@ship_coordinates = []
@@ -33,7 +32,7 @@ class Player
 	end
 
 	def has_board?
-		!@board.nil?
+		!@local_board.nil?
 	end
 
 	def unplaced_ships
@@ -45,6 +44,7 @@ class Player
 		raise NeedsToBeUnique if ship_coordinates.include?(cell_key)
 		@ship_coordinates << cell_key
 		give_ship_positions_to_board(ship_coordinates) if chosen_all_ships_positions?
+		# give_ship_positions_to_board(ship_coordinates) if true
 	end
 
 	def chooses_cell_for_shooting(cell_key)
@@ -67,11 +67,11 @@ class Player
 	end
 
 	def chosen_all_ships_positions?
-		ship_coordinates.count == DEFAULT_SHIP_COUNT_AT_START
+		ship_coordinates.count >= DEFAULT_SHIP_COUNT_AT_START
 	end
 
   def give_ship_positions_to_board(ship_coordinates)
-  	board.place_all_ships(ship_coordinates)
+  	@local_board.place_all_ships(ship_coordinates)
   end
 
 
