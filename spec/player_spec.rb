@@ -2,7 +2,7 @@ require "./lib/player.rb"
 
 describe Player do
 
-	let(:board) {double :board, :place_all_ships => nil}
+	let(:board) {double :board, :place_all_ships => nil, :shoot_at_cell => nil}
 	let(:player) {Player.new(board)}
 
 	it "should have a board" do
@@ -63,6 +63,11 @@ describe Player do
 		player.chooses_cell("e9")
 		player.chooses_cell("j3")
 		expect(board).to have_received(:place_all_ships)
+	end
+
+	it "should pass ship position to board when aiming fire!" do
+		player.chooses_cell_for_shooting("a1")
+		expect(board).to have_received(:shoot_at_cell)
 	end
 
 

@@ -51,6 +51,7 @@ class Player
 		raise IncorrectCharacterFormat unless appropriate_coordinates_for(cell_key)
 		raise NeedsToBeUnique if shot_coordinates.include?(cell_key)
 		@shot_coordinates << cell_key
+		give_shot_position_to_board(cell_key)
 	end
 
 	def appropriate_coordinates_for(cell_key)
@@ -72,6 +73,10 @@ class Player
 
   def give_ship_positions_to_board(ship_coordinates)
   	@local_board.place_all_ships(ship_coordinates)
+  end
+
+  def give_shot_position_to_board(grid_ref)
+  	@local_board.shoot_at_cell(grid_ref)
   end
 
 
