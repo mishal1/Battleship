@@ -52,5 +52,16 @@ class Display
       display
     end
   end
+end
+
+class FancyDisplay < Display
+  require 'colorize' # need to run 'gem install colorize' on command line
+  def map_cells(row)
+    row.map do |cell|
+      display = ( cell.have_ship ? 's'.magenta : 'w'.blue )
+      display.upcase if cell.hit
+      display
+    end
+  end
 
 end
