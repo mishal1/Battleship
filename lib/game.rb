@@ -1,10 +1,7 @@
 class Game
 
 	attr_accessor :players # is this dirty just for test?
-
- class Player; end
 	
-
   def initialize
 
   	player1 = Player.new
