@@ -1,10 +1,12 @@
 require_relative 'board'
-require_relative'ship'
-require_relative'cell'
-require_relative'display'
+require_relative 'ship'
+require_relative 'cell'
+require_relative 'display'
 
+DEFAULT_SHIP_COUNT_AT_START = 5
 
 class NeedsToBeUnique < Exception
+
 	def message
 		"Players are not allowed to select the same cell twice"
 	end
@@ -18,21 +20,19 @@ end
 
 class Player
 
-	attr_accessor :board
 	attr_accessor :ship_coordinates
 	attr_accessor :shot_coordinates
 
-	def initialize
-		@board = Board.new
+	def initialize(init_board = Board.new)
+		@local_board = init_board
 		@ships =[]
-		5.times{@ships << Ship.new}
+		DEFAULT_SHIP_COUNT_AT_START.times{@ships << Ship.new}
 		@ship_coordinates = []
 		@shot_coordinates = []
-
 	end
 
 	def has_board?
-		!@board.nil?
+		!@local_board.nil?
 	end
 
 	def unplaced_ships
@@ -67,5 +67,16 @@ class Player
 		coordinates << cell_key
 	end
 
-end
+	def chosen_all_ships_positions?
+		ship_coordinates.count >= DEFAULT_SHIP_COUNT_AT_START
+	end
 
+  def give_ship_positions_to_board(ship_coordinates)
+  	@local_board.place_all_ships(ship_coordinates)
+  end
+
+  def give_shot_position_to_board(grid_ref)
+  	@local_board.shoot_at_cell(grid_ref)
+  end
+
+end

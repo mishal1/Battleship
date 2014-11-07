@@ -2,12 +2,12 @@ require_relative 'cell'
 
 class Board
 
-   attr_accessor :cells_hash # can I do this for the dummy test?
+  attr_accessor :cells_hash # can I do this for the dummy test?
 
-   def initialize
+  def initialize
     @cells_hash = {}
     grid_ref_array.each {|grid_ref| @cells_hash[grid_ref] = Cell.new}
-   end
+  end
 
   def cells_hash
     @cells_hash
@@ -19,6 +19,16 @@ class Board
 
   def place_ship_cell(grid_ref)
     @cells_hash[grid_ref].is_part_of_a_ship
+  end
+
+  def place_all_ships(grid_ref_array)
+    grid_ref_array.each do |grid_ref| 
+      place_ship_cell(grid_ref)
+    end
+  end
+
+  def shoot_at_cell(grid_ref)
+    @cells_hash[grid_ref].has_been_hit
   end
 end
 
