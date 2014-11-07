@@ -47,8 +47,4 @@ describe Player do
 		expect{player.chooses_cell_for_shooting("w12")}.to raise_error(IncorrectCharacterFormat)
 	end
 
-#### here is where we are.
-# it "should place ships on the board when all the cells have been chosen" do
-
-
 end

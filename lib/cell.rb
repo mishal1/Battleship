@@ -1,12 +1,9 @@
 class Cell
+  attr_accessor :have_ship, :hit
 
   def initialize 
-    @have_ship = false
-    @hit = false
+    @have_ship, @hit = false, false
   end
-
-  attr_accessor :have_ship
-  attr_accessor :hit
 
   def is_part_of_a_ship
     @have_ship = true
