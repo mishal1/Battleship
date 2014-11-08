@@ -2,13 +2,12 @@ require_relative 'cell'
 
 class Board
 
-   attr_writer :cells_hash # can I do this for the dummy test?
+   attr_accessor :cells_hash # can I do this for the dummy test?
 
    def initialize
     @cells_hash = {}
     grid_ref_array.each {|grid_ref| @cells_hash[grid_ref] = Cell.new}
    end
-
 
   def cells_hash
     @cells_hash
