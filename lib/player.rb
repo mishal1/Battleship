@@ -1,10 +1,12 @@
 require_relative 'board'
-require_relative'ship'
-require_relative'cell'
-require_relative'display'
+require_relative 'ship'
+require_relative 'cell'
+require_relative 'display'
 
+DEFAULT_SHIP_COUNT_AT_START = 5
 
 class NeedsToBeUnique < Exception
+
 	def message
 		"Players are not allowed to select the same cell twice"
 	end
@@ -18,25 +20,19 @@ end
 
 class Player
 
-	attr_accessor :board
 	attr_accessor :ship_coordinates
 	attr_accessor :shot_coordinates
 
-	def initialize
-		@board = Board.new
+	def initialize(init_board = Board.new)
+		@local_board = init_board
 		@ships =[]
-		5.times{@ships << Ship.new}
+		DEFAULT_SHIP_COUNT_AT_START.times{@ships << Ship.new}
 		@ship_coordinates = []
 		@shot_coordinates = []
-
-#   suggested thinking
-#		ship_count_at_start = Game.new.ship_count_at_start
-#		ship_count_at_start.times{@ships << Ship.new}
-
 	end
 
 	def has_board?
-		!@board.nil?
+		!@local_board.nil?
 	end
 
 	def unplaced_ships
@@ -47,12 +43,15 @@ class Player
 		raise IncorrectCharacterFormat unless appropriate_coordinates_for(cell_key)
 		raise NeedsToBeUnique if ship_coordinates.include?(cell_key)
 		@ship_coordinates << cell_key
+		give_ship_positions_to_board(ship_coordinates) if chosen_all_ships_positions?
+		# give_ship_positions_to_board(ship_coordinates) if true
 	end
 
 	def chooses_cell_for_shooting(cell_key)
 		raise IncorrectCharacterFormat unless appropriate_coordinates_for(cell_key)
 		raise NeedsToBeUnique if shot_coordinates.include?(cell_key)
 		@shot_coordinates << cell_key
+		give_shot_position_to_board(cell_key)
 	end
 
 	def appropriate_coordinates_for(cell_key)
@@ -68,22 +67,17 @@ class Player
 		cell_key.length == char_count
 	end
 
-  # def place_something_on_board
-  # 	board.place_ship_cell(ship_coordinates.first)
+	def chosen_all_ships_positions?
+		ship_coordinates.count >= DEFAULT_SHIP_COUNT_AT_START
+	end
 
-### this basically should run when ship_co-ordintes.count == ship_count_at_start (predefined)
+  def give_ship_positions_to_board(ship_coordinates)
+  	@local_board.place_all_ships(ship_coordinates)
+  end
 
-  # end
-
-
-  # def test_player
-  # 	place_something_on_board
-  # 	self.board.show("Adam")
-  # end
-
+  def give_shot_position_to_board(grid_ref)
+  	@local_board.shoot_at_cell(grid_ref)
+  end
 
 
 end
-# my_player = Player.new
-# my_player.chooses_cell('b8')
-# my_player.test_player
