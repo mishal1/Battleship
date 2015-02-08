@@ -1,64 +1,24 @@
-Battleship
-==============
+#Battleship
 
-Battleship is our second week task.  This has been the first task that we have structured and worked upon completely in a group.  As such, this has been the first task in which we have begun to deploy concepts such as kanban cards and collobarated our work via branching on Github.  Our team has collaborated via a repository managed on one team member's account, with everyone assigned as a collaborator.  Each morning, we held stand-up meetings to discuss progress, issues, and our approach.  We rotated in pairing and started to refactor.  To advance this in future, we should take this to another level and check we are consistent with the SOLID principles.  In terms of new Ruby concepts, we learnt about Struct this week.  We also begun to consider the User Interface and a central game "engine."  
+Week 2 at Maker's Academy.
 
+##Context
+Battleship was our second week task. Battleship is a game where each player has a board upon which they can place a number of ships. After each player has placed their ships on their own board they take turns to shoot on the opponents board. In each round, each player takes a turn to announce a target square in the opponent's grid which is to be shot at. The opponent announces whether or not the square is occupied by a ship, and if it is a hit they mark this on their own primary grid. The attacking player notes the hit or miss on their own tracking grid, in order to build up a picture of the opponent's fleet. When all of one player's ships have been hit the game finishes and the player who has ships remaining is the winner.
 
-##CRC Cards
+This was the first task that we structured and worked upon completely in a group. As such, this was the first task in which we begun to deploy concepts such as kanban cards and collobarated our work via branching on Github. Our team has collaborated via a repository managed on one team member's account, with everyone assigned as a collaborator. Each morning, we held stand-up meetings to discuss progress, issues, and our approach. We rotated in pairing and started to refactor.
 
-###Game Class
+##Learning Objectives
+- Test-Driven Development
+- SOLID Principles
+- User experience and interface design
+- Agile principles
 
-|it should:|it interacts with:|
-|-----|-----|
-|- have two players|- player|
-|- must be able to start| |
-|- chooses a player to start| |
-|- must end| |
+##Technology Used
+- Ruby
+- Rspec
 
-
-###Player Class
-
-|it should:|it interacts with:|
-|-----|-----|
-|- when initialized players are given two empty boards and a certain amount of ships |- game |
-|- place the ships |-board|
-|- shoots and updates boards| |
-|- sees board| |
-|- be able to win| |
-
-
-###Board Class
-
-|it should:|it interacts with:|
-|-----|-----|
-|- capacity of 100 squares|-ships|
-|- belongs to a player|-player|
-|- needs to know if it is the primary or tracking|-square (cell)|
-|- needs to tell the player if all the ships have sunk| |
-|- asks the player to place a ship| |
-|- keeps track of which ships have not been placed| |
-|- needs to know about square functions| |
-|- needs to a grid| |
-|- square location should be [a-j][1-10]| |
-
-
-###Square Class
-
-|it should:|it interacts with:|
-|-----|-----|
-|- belongs to a board|-board|
-|- records ships|-ship|
-|- records shots| |
-|- has water where there are no ships| |
-|- board tells ships if they are hit| |
-|- must be unique| |
-
-
-###Ship Class
-
-|it should:|it interacts with:|
-|-----|-----|
-|- be able to float|-board|
-|- be able to sink|-square (cell)|
-|- has a length| |
-|- needs an identifier| |
+#Team
+- [Mishal Islam](https://github.com/mishal1)
+- [Chris Handley](https://github.com/chandley)
+- [Ming Chan](https://github.com/ming-chan)
+- [Ben Hutchinson](https://github.com/benhutchinson)
